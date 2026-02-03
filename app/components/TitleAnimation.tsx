@@ -2,26 +2,24 @@
 
 import { useState, useEffect, useCallback, memo } from "react";
 import Image from "next/image";
+import { withBasePath } from "../lib/constants";
 
-// basePath 설정 (production에서는 /animation-sample)
-const basePath = process.env.NODE_ENV === 'production' ? '/animation-sample' : '';
-
-// 1부터 40까지의 이미지 경로 생성
+// 1부터 40까지의 이미지 경로 생성 (basePath 포함)
 const generateTitleImages = () => {
     const images = [];
     for (let i = 1; i <= 40; i++) {
-        images.push(`/title/title_motion_${String(i).padStart(2, '0')}.png`);
+        images.push(withBasePath(`/title/title_motion_${String(i).padStart(2, '0')}.png`));
     }
     return images;
 };
 
 const titleImages = generateTitleImages();
 
-// 이미지 프리로딩 함수 (basePath 포함)
+// 이미지 프리로딩 함수
 const preloadImages = (imageUrls: string[]) => {
     imageUrls.forEach((url) => {
         const img = new window.Image();
-        img.src = `${basePath}${url}`;
+        img.src = url;
     });
 };
 

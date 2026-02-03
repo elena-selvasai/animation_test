@@ -3,21 +3,19 @@
 import { useState, useEffect, useCallback, useMemo, memo, useRef } from "react";
 import { motion, useAnimation, AnimatePresence } from "motion/react";
 import Image from "next/image";
-
-// basePath 설정 (production에서는 /animation-sample)
-const basePath = process.env.NODE_ENV === 'production' ? '/animation-sample' : '';
+import { withBasePath } from "../lib/constants";
 
 const images = [
-    "/characters/character1 (1).svg",
-    "/characters/character1 (2).svg",
-    "/characters/character1 (3).svg",
+    withBasePath("/characters/character1 (1).svg"),
+    withBasePath("/characters/character1 (2).svg"),
+    withBasePath("/characters/character1 (3).svg"),
 ];
 
-// 이미지 프리로딩 함수 (basePath 포함)
+// 이미지 프리로딩 함수
 const preloadImages = (imageUrls: string[]) => {
     imageUrls.forEach((url) => {
         const img = new window.Image();
-        img.src = `${basePath}${url}`;
+        img.src = url;
     });
 };
 
@@ -155,7 +153,7 @@ export default function CharacterAnimation() {
                         pointerEvents: "none",
                     }}
                 >
-                    <source src={`${basePath}/videos/856430-uhd_3840_2160_30fps.mp4`} type="video/mp4" />
+                    <source src={withBasePath("/videos/856430-uhd_3840_2160_30fps.mp4")} type="video/mp4" />
                 </video>
                 {/* 비디오 위 오버레이 (캐릭터 가시성 향상) */}
                 <div 

@@ -2,9 +2,7 @@
 
 import { useState, useRef, useCallback } from "react";
 import gsap from "gsap";
-
-// basePath 설정 (production에서는 /animation-sample)
-const basePath = process.env.NODE_ENV === 'production' ? '/animation-sample' : '';
+import { withBasePath } from "../lib/constants";
 
 interface WarmingUpScreenProps {
   width?: number;
@@ -43,11 +41,11 @@ export default function WarmingUpScreen({
   ];
 
   const navButtons = [
-    { id: "dictionary", label: "그림 사전", icon: `${basePath}/icons/icon-dictionary.svg` },
-    { id: "library", label: "자료실", icon: `${basePath}/icons/icon-library.svg` },
-    { id: "tool", label: "수업 도우미", icon: `${basePath}/icons/icon-tool.svg` },
-    { id: "schedule", label: "진도 관리", icon: `${basePath}/icons/icon-schedule.svg` },
-    { id: "help", label: "도움말", icon: `${basePath}/icons/icon-help.svg` },
+    { id: "dictionary", label: "그림 사전", icon: withBasePath("/icons/icon-dictionary.svg") },
+    { id: "library", label: "자료실", icon: withBasePath("/icons/icon-library.svg") },
+    { id: "tool", label: "수업 도우미", icon: withBasePath("/icons/icon-tool.svg") },
+    { id: "schedule", label: "진도 관리", icon: withBasePath("/icons/icon-schedule.svg") },
+    { id: "help", label: "도움말", icon: withBasePath("/icons/icon-help.svg") },
   ];
 
   const handleDragStart = useCallback(
@@ -116,7 +114,7 @@ export default function WarmingUpScreen({
       <div
         className="absolute inset-0 opacity-30"
         style={{
-          backgroundImage: `url(${basePath}/images/warming-up-bg.png)`,
+          backgroundImage: `url(${withBasePath("/images/warming-up-bg.png")})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -140,7 +138,7 @@ export default function WarmingUpScreen({
             }}
           >
             <img
-              src={`${basePath}/ui/lesson-header.svg`}
+              src={withBasePath("/ui/lesson-header.svg")}
               alt="Lesson Data"
               style={{ height: `${24 * scale}px` }}
             />
@@ -165,7 +163,7 @@ export default function WarmingUpScreen({
               Corner Data
             </span>
             <img
-              src={`${basePath}/ui/dropdown-arrow.svg`}
+              src={withBasePath("/ui/dropdown-arrow.svg")}
               alt=""
               style={{ width: `${10 * scale}px`, height: `${8 * scale}px` }}
             />
@@ -282,7 +280,7 @@ export default function WarmingUpScreen({
               }}
             >
               <img
-                src={`${basePath}/images/warming-up-scene.png`}
+                src={withBasePath("/images/warming-up-scene.png")}
                 alt="Field trip scene"
                 className="absolute inset-0 w-full h-full object-cover"
               />
@@ -315,7 +313,7 @@ export default function WarmingUpScreen({
                   onTouchStart={(e) => handleDragStart(e, item.id)}
                 >
                   <img
-                    src={item.type === "o" ? `${basePath}/ui/drag-circle-o.svg` : `${basePath}/ui/drag-circle-x.svg`}
+                    src={item.type === "o" ? withBasePath("/ui/drag-circle-o.svg") : withBasePath("/ui/drag-circle-x.svg")}
                     alt={item.type === "o" ? "O" : "X"}
                     className="w-full h-full pointer-events-none"
                     draggable={false}
@@ -338,7 +336,7 @@ export default function WarmingUpScreen({
         {/* Speaker */}
         <div className="flex items-center gap-2">
           <img
-            src={`${basePath}/icons/icon-speaker.svg`}
+            src={withBasePath("/icons/icon-speaker.svg")}
             alt="Speaker"
             className="cursor-pointer hover:opacity-80 transition-opacity"
             style={{ width: `${20 * scale}px`, height: `${20 * scale}px` }}
