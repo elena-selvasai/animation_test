@@ -40,11 +40,11 @@ export default function WarmingUpScreen({
   ];
 
   const navButtons = [
-    { id: "dictionary", label: "그림 사전", icon: "/icon-dictionary.svg" },
-    { id: "library", label: "자료실", icon: "/icon-library.svg" },
-    { id: "tool", label: "수업 도우미", icon: "/icon-tool.svg" },
-    { id: "schedule", label: "진도 관리", icon: "/icon-schedule.svg" },
-    { id: "help", label: "도움말", icon: "/icon-help.svg" },
+    { id: "dictionary", label: "그림 사전", icon: "/icons/icon-dictionary.svg" },
+    { id: "library", label: "자료실", icon: "/icons/icon-library.svg" },
+    { id: "tool", label: "수업 도우미", icon: "/icons/icon-tool.svg" },
+    { id: "schedule", label: "진도 관리", icon: "/icons/icon-schedule.svg" },
+    { id: "help", label: "도움말", icon: "/icons/icon-help.svg" },
   ];
 
   const handleDragStart = useCallback(
@@ -113,7 +113,7 @@ export default function WarmingUpScreen({
       <div
         className="absolute inset-0 opacity-30"
         style={{
-          backgroundImage: "url(/warming-up-bg.png)",
+          backgroundImage: "url(/images/warming-up-bg.png)",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -137,7 +137,7 @@ export default function WarmingUpScreen({
             }}
           >
             <img
-              src="/lesson-header.svg"
+              src="/ui/lesson-header.svg"
               alt="Lesson Data"
               style={{ height: `${24 * scale}px` }}
             />
@@ -162,7 +162,7 @@ export default function WarmingUpScreen({
               Corner Data
             </span>
             <img
-              src="/dropdown-arrow.svg"
+              src="/ui/dropdown-arrow.svg"
               alt=""
               style={{ width: `${10 * scale}px`, height: `${8 * scale}px` }}
             />
@@ -279,7 +279,7 @@ export default function WarmingUpScreen({
               }}
             >
               <img
-                src="/warming-up-scene.png"
+                src="/images/warming-up-scene.png"
                 alt="Field trip scene"
                 className="absolute inset-0 w-full h-full object-cover"
               />
@@ -312,7 +312,7 @@ export default function WarmingUpScreen({
                   onTouchStart={(e) => handleDragStart(e, item.id)}
                 >
                   <img
-                    src={item.type === "o" ? "/drag-circle-o.svg" : "/drag-circle-x.svg"}
+                    src={item.type === "o" ? "/ui/drag-circle-o.svg" : "/ui/drag-circle-x.svg"}
                     alt={item.type === "o" ? "O" : "X"}
                     className="w-full h-full pointer-events-none"
                     draggable={false}
@@ -335,7 +335,7 @@ export default function WarmingUpScreen({
         {/* Speaker */}
         <div className="flex items-center gap-2">
           <img
-            src="/icon-speaker.svg"
+            src="/icons/icon-speaker.svg"
             alt="Speaker"
             className="cursor-pointer hover:opacity-80 transition-opacity"
             style={{ width: `${20 * scale}px`, height: `${20 * scale}px` }}

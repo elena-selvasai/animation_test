@@ -5,9 +5,9 @@ import { motion, useAnimation, AnimatePresence } from "motion/react";
 import Image from "next/image";
 
 const images = [
-    "/character1 (1).svg",
-    "/character1 (2).svg",
-    "/character1 (3).svg",
+    "/characters/character1 (1).svg",
+    "/characters/character1 (2).svg",
+    "/characters/character1 (3).svg",
 ];
 
 // 이미지 프리로딩 함수
@@ -152,7 +152,7 @@ export default function CharacterAnimation() {
                         pointerEvents: "none",
                     }}
                 >
-                    <source src="/856430-uhd_3840_2160_30fps.mp4" type="video/mp4" />
+                    <source src="/videos/856430-uhd_3840_2160_30fps.mp4" type="video/mp4" />
                 </video>
                 {/* 비디오 위 오버레이 (캐릭터 가시성 향상) */}
                 <div 
