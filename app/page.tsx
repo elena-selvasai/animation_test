@@ -2,15 +2,15 @@
 
 import { useState } from "react";
 import { Tab, TabConfig } from "./types";
-import { AppLoadContent, AnimationContent, WarmingUpContent, GsapExamplesContent, MotionExamplesContent } from "./components/contents";
+import { AppLoadContent, AnimationContent, GsapExamplesContent, MotionExamplesContent, CharacterExamplesContent } from "./components/contents";
 
 // Tab configuration
 const tabs: TabConfig[] = [
   { id: "appLoad", label: "앱 로딩", icon: "📱" },
   { id: "animation", label: "애니메이션", icon: "🎬" },
-  { id: "warmingUp", label: "학습 활동", icon: "📚" },
   { id: "gsapExamples", label: "GSAP", icon: "✨" },
   { id: "motionExamples", label: "Motion", icon: "🎭" },
+  { id: "characterExamples", label: "캐릭터", icon: "🐰" },
 ];
 
 export default function Home() {
@@ -22,12 +22,12 @@ export default function Home() {
         return <AppLoadContent />;
       case "animation":
         return <AnimationContent />;
-      case "warmingUp":
-        return <WarmingUpContent />;
       case "gsapExamples":
         return <GsapExamplesContent />;
       case "motionExamples":
         return <MotionExamplesContent />;
+      case "characterExamples":
+        return <CharacterExamplesContent />;
       default:
         return <AppLoadContent />;
     }
