@@ -21,7 +21,7 @@ const itemVariants = {
     opacity: 1,
     scale: 1,
     transition: {
-      type: "spring",
+      type: "spring" as const,
       stiffness: 300,
       damping: 20,
     },
@@ -37,7 +37,7 @@ const cardVariants = {
     scale: 1.05,
     boxShadow: "0 20px 40px rgba(0,0,0,0.2)",
     transition: {
-      type: "spring",
+      type: "spring" as const,
       stiffness: 400,
       damping: 20,
     },
