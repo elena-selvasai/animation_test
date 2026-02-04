@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Tab, TabConfig } from "./types";
 import { AppLoadContent, AnimationContent, GsapExamplesContent, MotionExamplesContent, CharacterExamplesContent } from "./components/contents";
 
@@ -51,16 +52,55 @@ export default function Home() {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`w-16 h-16 rounded-xl flex flex-col items-center justify-center gap-1 transition-all ${
-              activeTab === tab.id
-                ? "bg-[#5B69E9] text-white shadow-md scale-105"
-                : "bg-zinc-300 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-400 dark:hover:bg-zinc-600"
-            }`}
+            className={`w-16 h-16 rounded-xl flex flex-col items-center justify-center gap-1 transition-all ${activeTab === tab.id
+              ? "bg-[#5B69E9] text-white shadow-md scale-105"
+              : "bg-zinc-300 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-400 dark:hover:bg-zinc-600"
+              }`}
           >
             <span className="text-xl">{tab.icon}</span>
             <span className="text-[10px] font-medium leading-tight text-center">{tab.label}</span>
           </button>
         ))}
+        {/* Helper Link to /river */}
+        <Link
+          href="/river"
+          className="w-16 h-16 rounded-xl flex flex-col items-center justify-center gap-1 transition-all bg-zinc-300 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-400 dark:hover:bg-zinc-600"
+        >
+          <span className="text-xl">🌊</span>
+          <span className="text-[10px] font-medium leading-tight text-center">River</span>
+        </Link>
+        <Link
+          href="/river-phaser"
+          className="w-16 h-16 rounded-xl flex flex-col items-center justify-center gap-1 transition-all bg-zinc-300 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-400 dark:hover:bg-zinc-600"
+        >
+          <span className="text-xl">🎮</span>
+          <span className="text-[10px] font-medium leading-tight text-center">Phaser</span>
+        </Link>
+        <Link
+          href="/river-pixi"
+          className="w-16 h-16 rounded-xl flex flex-col items-center justify-center gap-1 transition-all bg-zinc-300 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-400 dark:hover:bg-zinc-600"
+        >
+          <span className="text-xl">🏊</span>
+          <span className="text-[10px] font-medium leading-tight text-center">PixiJS</span>
+        </Link>
+        
+        {/* 구분선 */}
+        <div className="w-12 h-px bg-zinc-400 dark:bg-zinc-600 my-1" />
+        
+        <Link
+          href="/maze"
+          className="w-16 h-16 rounded-xl flex flex-col items-center justify-center gap-1 transition-all bg-zinc-300 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-400 dark:hover:bg-zinc-600"
+        >
+          <span className="text-xl">🏃</span>
+          <span className="text-[10px] font-medium leading-tight text-center">미로2D</span>
+        </Link>
+        <Link
+          href="/maze-3d"
+          className="w-16 h-16 rounded-xl flex flex-col items-center justify-center gap-1 transition-all bg-zinc-300 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-400 dark:hover:bg-zinc-600"
+        >
+          <span className="text-xl">🎯</span>
+          <span className="text-[10px] font-medium leading-tight text-center">미로3D</span>
+        </Link>
       </aside>
 
       {/* Main Content Area */}
