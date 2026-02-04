@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useMemo, memo, useRef } from "react";
 import { motion, useAnimation, AnimatePresence } from "motion/react";
 import Image from "next/image";
-import { withBasePath } from "../lib/constants";
+import { withBasePath } from "@/app/lib/constants";
 
 const images = [
     withBasePath("/characters/character1 (1).svg"),

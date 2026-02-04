@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { Maze3DGame } from "../components/gsap";
+import { MazeGame } from "@/app/components/demos/gsap";
 
-export default function Maze3DPage() {
+export default function MazePage() {
   return (
     <main className="min-h-screen bg-zinc-900 py-8 px-4">
       <div className="max-w-2xl mx-auto">
@@ -16,24 +16,23 @@ export default function Maze3DPage() {
             ← 홈으로
           </Link>
           <Link
-            href="/maze"
-            className="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg transition-colors"
+            href="/maze-3d"
+            className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors"
           >
-            2D 버전 →
+            3D 버전 →
           </Link>
         </div>
 
         {/* 게임 */}
-        <Maze3DGame />
+        <MazeGame />
 
         {/* 설명 */}
         <div className="mt-6 p-4 bg-zinc-800 rounded-lg text-zinc-300 text-sm">
-          <h3 className="font-bold text-white mb-2">3D 미로 탈출</h3>
-          <p className="mb-2">React Three Fiber를 사용한 1인칭 3D 미로 게임입니다.</p>
+          <h3 className="font-bold text-white mb-2">2D 미로 탈출</h3>
+          <p className="mb-2">GSAP을 사용한 2D 미로 게임입니다.</p>
           <ul className="list-disc list-inside space-y-1 text-zinc-400">
-            <li>WASD 또는 방향키로 이동</li>
-            <li>마우스로 시점 회전</li>
-            <li>ESC로 마우스 잠금 해제</li>
+            <li>방향키 또는 WASD로 이동</li>
+            <li>ESC로 일시정지</li>
             <li>💎 코인을 수집하고 🚩에 도착하세요!</li>
           </ul>
         </div>

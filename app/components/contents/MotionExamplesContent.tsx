@@ -7,7 +7,7 @@ import {
   LayoutDemo,
   KeyframesDemo,
   SpringDemo,
-} from "../motion";
+} from "../demos/motion";
 
 export default function MotionExamplesContent() {
   return (

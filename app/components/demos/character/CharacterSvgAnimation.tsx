@@ -259,7 +259,7 @@ export default function CharacterSvgAnimation() {
   }, [playBlink, playWave, playEarWiggle]);
 
   return (
-    <div className="bg-white dark:bg-zinc-800 rounded-xl p-6 shadow-lg">
+    <div className="bg-white dark:bg-zinc-800 w-full rounded-xl p-6 shadow-lg">
       <h3 className="text-lg font-bold text-zinc-800 dark:text-zinc-100 mb-2">
         SVG 캐릭터 애니메이션
       </h3>

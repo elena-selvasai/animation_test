@@ -589,7 +589,7 @@ export default function Maze3DGame() {
   }, []);
 
   return (
-    <div className="bg-white dark:bg-zinc-800 rounded-xl p-6 shadow-lg">
+    <div className="bg-white dark:bg-zinc-800 w-full rounded-xl p-6 shadow-lg">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-bold text-zinc-800 dark:text-zinc-100">
           3D 미로 탈출 🎮
@@ -603,7 +603,7 @@ export default function Maze3DGame() {
       </div>
 
       {/* 3D 캔버스 */}
-      <div className="relative w-full h-[400px] rounded-lg overflow-hidden bg-slate-900">
+      <div className="relative w-full h-[500px] rounded-lg overflow-hidden bg-slate-900">
         <Canvas shadows camera={{ fov: 75, near: 0.1, far: 1000 }}>
           <MazeScene
             gameState={gameState}

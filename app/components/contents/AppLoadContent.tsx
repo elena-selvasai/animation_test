@@ -3,8 +3,7 @@
 import { useState, useRef } from "react";
 import gsap from "gsap";
 import { Screen } from "@/app/types";
-import LoginScreen from "../LoginScreen";
-import EmailListScreen from "../EmailListScreen";
+import { LoginScreen, EmailListScreen } from "../screens";
 
 export default function AppLoadContent() {
   const [currentScreen, setCurrentScreen] = useState<Screen>("login");

@@ -8,7 +8,7 @@ import {
   StaggerDemo,
   TextAnimation,
   SvgAnimation,
-} from "../gsap";
+} from "../demos/gsap";
 
 export default function GsapExamplesContent() {
   return (

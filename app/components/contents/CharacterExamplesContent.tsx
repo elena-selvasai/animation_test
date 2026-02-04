@@ -1,6 +1,6 @@
 "use client";
 
-import { CharacterSvgAnimation } from "../character";
+import { CharacterSvgAnimation } from "../demos/character";
 
 export default function CharacterExamplesContent() {
   return (

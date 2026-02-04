@@ -1,8 +1,6 @@
 "use client";
 
-import TitleAnimation from "../TitleAnimation";
-import TitleAnimationGSAP from "../TitleAnimationGSAP";
-import CharacterAnimation from "../CharacterAnimation";
+import { TitleAnimation, TitleAnimationGSAP, CharacterAnimation } from "../screens";
 
 export default function AnimationContent() {
   return (

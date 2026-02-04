@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect, useCallback, memo } from "react";
+import { useState, useEffect, useRef, useCallback, memo } from "react";
 import Image from "next/image";
-import { withBasePath } from "../lib/constants";
+import { gsap } from "gsap";
+import { withBasePath } from "@/app/lib/constants";
 
 // 1부터 40까지의 이미지 경로 생성 (basePath 포함)
 const generateTitleImages = () => {
@@ -23,8 +24,8 @@ const preloadImages = (imageUrls: string[]) => {
     });
 };
 
-// 최적화된 이미지 프레임 컴포넌트 - 깜박임 없는 버전
-const TitleFrame = memo(({
+// 최적화된 이미지 프레임 컴포넌트 - GSAP 버전
+const TitleFrameGSAP = memo(({
     src,
     index,
     isActive,
@@ -37,15 +38,28 @@ const TitleFrame = memo(({
     width?: number;
     height?: number;
 }) => {
+    const frameRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (!frameRef.current) return;
+
+        // GSAP을 사용한 즉시 opacity 전환
+        gsap.to(frameRef.current, {
+            opacity: /**isActive ? 1 : 0*/1,
+            duration: 0,
+            ease: "none",
+        });
+    }, [isActive]);
+
     return (
         <div
+            ref={frameRef}
             className="absolute inset-0 flex items-center justify-center"
             style={{
-                opacity: isActive ? 1 : 0,
+                opacity: 0,
                 visibility: isActive ? "visible" : "hidden",
                 pointerEvents: isActive ? "auto" : "none",
                 transform: "translate3d(0, 0, 0)", // GPU 가속
-                transition: "none", // transition 완전 제거
                 zIndex: isActive ? 10 : 0,
             }}
         >
@@ -69,9 +83,9 @@ const TitleFrame = memo(({
     );
 });
 
-TitleFrame.displayName = "TitleFrame";
+TitleFrameGSAP.displayName = "TitleFrameGSAP";
 
-interface TitleAnimationProps {
+interface TitleAnimationGSAPProps {
     width?: number;
     height?: number;
     fps?: number; // 초당 프레임 수 (기본: 24fps)
@@ -82,7 +96,7 @@ interface TitleAnimationProps {
     showProgress?: boolean; // 진행도 표시 여부 (기본: false)
 }
 
-export default function TitleAnimation({
+export default function TitleAnimationGSAP({
     width = 400,
     height = 200,
     fps = 24,
@@ -91,16 +105,17 @@ export default function TitleAnimation({
     onComplete,
     showControls = false,
     showProgress = false
-}: TitleAnimationProps) {
+}: TitleAnimationGSAPProps) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isPlaying, setIsPlaying] = useState(autoPlay);
     const [imagesLoaded, setImagesLoaded] = useState(false);
     const [hasCompleted, setHasCompleted] = useState(false);
+    const timelineRef = useRef<gsap.core.Timeline | null>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     // 이미지 프리로딩
     useEffect(() => {
         preloadImages(titleImages);
-        // 프리로딩 완료 후 약간의 딜레이를 두고 로드 완료 표시
         const timer = setTimeout(() => {
             setImagesLoaded(true);
         }, 100);
@@ -129,17 +144,36 @@ export default function TitleAnimation({
         });
     }, [loop, onComplete, hasCompleted]);
 
-    // 프레임 애니메이션
+    // GSAP 타임라인을 사용한 프레임 애니메이션
     useEffect(() => {
         if (!isPlaying || !imagesLoaded) return;
 
         const frameInterval = 1000 / fps; // fps에 따른 프레임 간격
+
+        // setInterval 대신 GSAP의 ticker를 사용
         const interval = setInterval(() => {
             nextFrame();
         }, frameInterval);
 
         return () => clearInterval(interval);
     }, [isPlaying, imagesLoaded, fps, nextFrame]);
+
+    // 컨테이너에 GSAP 애니메이션 적용 (선택사항)
+    useEffect(() => {
+        if (!containerRef.current) return;
+
+        // 초기 애니메이션
+        gsap.fromTo(
+            containerRef.current,
+            { opacity: 0, scale: 0.9 },
+            {
+                opacity: 1,
+                scale: 1,
+                duration: 0.5,
+                ease: "power2.out",
+            }
+        );
+    }, []);
 
     // 재생/일시정지 토글
     const togglePlay = () => {
@@ -161,6 +195,7 @@ export default function TitleAnimation({
         <div className="flex flex-col items-center">
             {/* 타이틀 애니메이션 */}
             <div
+                ref={containerRef}
                 className="relative cursor-pointer select-none"
                 onClick={togglePlay}
                 style={{
@@ -173,7 +208,7 @@ export default function TitleAnimation({
             >
                 {imagesLoaded ? (
                     titleImages.map((src, index) => (
-                        <TitleFrame
+                        <TitleFrameGSAP
                             key={src}
                             src={src}
                             index={index}
@@ -216,7 +251,7 @@ export default function TitleAnimation({
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-2">
                         <div
-                            className="bg-blue-500 h-2 rounded-full transition-all duration-100"
+                            className="bg-green-500 h-2 rounded-full transition-all duration-100"
                             style={{ width: `${(currentIndex / (titleImages.length - 1)) * 100}%` }}
                         />
                     </div>
