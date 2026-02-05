@@ -19,7 +19,6 @@ import {
 // Tab configuration with groups
 const tabs: TabConfig[] = [
   // 기본 데모
-  { id: "appLoad", label: "앱 로딩", icon: "📱", group: "demos" },
   { id: "animation", label: "애니메이션", icon: "🎬", group: "demos" },
   { id: "gsapExamples", label: "GSAP", icon: "✨", group: "demos" },
   { id: "motionExamples", label: "Motion", icon: "🎭", group: "demos" },
@@ -31,8 +30,9 @@ const tabs: TabConfig[] = [
   // 미로 게임
   { id: "maze", label: "미로2D", icon: "🏃", group: "maze" },
   { id: "maze3d", label: "미로3D", icon: "🎯", group: "maze" },
-  // Bono Quiz
-  { id: "bono", label: "Bono Quiz", icon: "🎤", group: "bono" },
+  // Figma Test
+  { id: "appLoad", label: "앱 로딩", icon: "📱", group: "figma-test" },
+  { id: "bono", label: "Bono Quiz", icon: "🎤", group: "figma-test" },
 ];
 
 export default function Home() {
@@ -71,7 +71,7 @@ export default function Home() {
   const demoTabs = tabs.filter((t) => t.group === "demos");
   const riverTabs = tabs.filter((t) => t.group === "river");
   const mazeTabs = tabs.filter((t) => t.group === "maze");
-  const bonoTabs = tabs.filter((t) => t.group === "bono");
+  const figmaTestTabs = tabs.filter((t) => t.group === "figma-test");
 
   const renderTabButton = (tab: TabConfig) => (
     <button
@@ -128,7 +128,7 @@ export default function Home() {
         <span className="text-[9px] text-zinc-500 dark:text-zinc-400 font-medium">
           BONO
         </span>
-        {bonoTabs.map(renderTabButton)}
+        {figmaTestTabs.map(renderTabButton)}
       </aside>
 
       {/* Main Content Area */}
