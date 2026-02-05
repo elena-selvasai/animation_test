@@ -9,7 +9,8 @@ export type Tab =
   | "riverPhaser"
   | "riverPixi"
   | "maze"
-  | "maze3d";
+  | "maze3d"
+  | "bono";
 
 export type Screen = "login" | "emailList";
 

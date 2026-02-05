@@ -13,6 +13,7 @@ import {
   RiverPixiContent,
   MazeContent,
   Maze3DContent,
+  BonoQuizContent,
 } from "./components/contents";
 
 // Tab configuration with groups
@@ -30,6 +31,8 @@ const tabs: TabConfig[] = [
   // 미로 게임
   { id: "maze", label: "미로2D", icon: "🏃", group: "maze" },
   { id: "maze3d", label: "미로3D", icon: "🎯", group: "maze" },
+  // Bono Quiz
+  { id: "bono", label: "Bono Quiz", icon: "🎤", group: "bono" },
 ];
 
 export default function Home() {
@@ -57,6 +60,8 @@ export default function Home() {
         return <MazeContent />;
       case "maze3d":
         return <Maze3DContent />;
+      case "bono":
+        return <BonoQuizContent />;
       default:
         return <AppLoadContent />;
     }
@@ -66,6 +71,7 @@ export default function Home() {
   const demoTabs = tabs.filter((t) => t.group === "demos");
   const riverTabs = tabs.filter((t) => t.group === "river");
   const mazeTabs = tabs.filter((t) => t.group === "maze");
+  const bonoTabs = tabs.filter((t) => t.group === "bono");
 
   const renderTabButton = (tab: TabConfig) => (
     <button
@@ -116,6 +122,13 @@ export default function Home() {
           MAZE
         </span>
         {mazeTabs.map(renderTabButton)}
+
+        {/* 구분선 - Bono */}
+        <div className="w-12 h-px bg-zinc-400 dark:bg-zinc-600 my-1" />
+        <span className="text-[9px] text-zinc-500 dark:text-zinc-400 font-medium">
+          BONO
+        </span>
+        {bonoTabs.map(renderTabButton)}
       </aside>
 
       {/* Main Content Area */}
