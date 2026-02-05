@@ -2,26 +2,27 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { withBasePath } from "@/app/lib/constants";
 
 // 보노 캐릭터 애니메이션 프레임 (9프레임)
 const BONO_ANIMATION_FRAMES = [
-  "/bono/animation/bono_0000.png",
-  "/bono/animation/bono_0001.png",
-  "/bono/animation/bono_0002.png",
-  "/bono/animation/bono_0003.png",
-  "/bono/animation/bono_0004.png",
-  "/bono/animation/bono_0005.png",
-  "/bono/animation/bono_0006.png",
-  "/bono/animation/bono_0007.png",
-  "/bono/animation/bono_0008.png",
+  withBasePath("/bono/animation/bono_0000.png"),
+  withBasePath("/bono/animation/bono_0001.png"),
+  withBasePath("/bono/animation/bono_0002.png"),
+  withBasePath("/bono/animation/bono_0003.png"),
+  withBasePath("/bono/animation/bono_0004.png"),
+  withBasePath("/bono/animation/bono_0005.png"),
+  withBasePath("/bono/animation/bono_0006.png"),
+  withBasePath("/bono/animation/bono_0007.png"),
+  withBasePath("/bono/animation/bono_0008.png"),
 ];
 
 // 국기 선택지 데이터
 const FLAG_OPTIONS = [
-  { id: 'brazil', src: '/bono/quiz/flag-brazil.svg', name: '브라질' },
-  { id: 'usa', src: '/bono/quiz/flag-usa.svg', name: '미국' },
-  { id: 'korea', src: '/bono/quiz/flag-korea.svg', name: '한국' },
-  { id: 'france', src: '/bono/quiz/flag-france.svg', name: '프랑스' },
+  { id: 'brazil', src: withBasePath('/bono/quiz/flag-brazil.svg'), name: '브라질' },
+  { id: 'usa', src: withBasePath('/bono/quiz/flag-usa.svg'), name: '미국' },
+  { id: 'korea', src: withBasePath('/bono/quiz/flag-korea.svg'), name: '한국' },
+  { id: 'france', src: withBasePath('/bono/quiz/flag-france.svg'), name: '프랑스' },
 ];
 
 export default function BonoQuizContent() {
@@ -107,7 +108,7 @@ export default function BonoQuizContent() {
         {/* Grid Background Pattern */}
         <div className="absolute inset-0 overflow-hidden">
           <Image
-            src="/bono/grid-pattern.svg"
+            src={withBasePath("/bono/grid-pattern.svg")}
             alt=""
             fill
             className="object-cover"
@@ -125,7 +126,7 @@ export default function BonoQuizContent() {
           }}
         >
           <Image
-            src="/bono/shape-bg-1.svg"
+            src={withBasePath("/bono/shape-bg-1.svg")}
             alt=""
             fill
             className="object-cover"
@@ -143,7 +144,7 @@ export default function BonoQuizContent() {
           }}
         >
           <Image
-            src="/bono/shape-bg-2.svg"
+            src={withBasePath("/bono/shape-bg-2.svg")}
             alt=""
             fill
             className="object-cover"
@@ -166,7 +167,7 @@ export default function BonoQuizContent() {
           {/* Digital Background Pattern */}
           <div className="absolute inset-0 overflow-hidden">
             <Image
-              src="/bono/digital-bg.svg"
+              src={withBasePath("/bono/digital-bg.svg")}
               alt=""
               fill
               className="object-cover opacity-30"
@@ -185,7 +186,7 @@ export default function BonoQuizContent() {
           }}
         >
           <Image
-            src="/bono/shadow-ellipse.svg"
+            src={withBasePath("/bono/shadow-ellipse.svg")}
             alt=""
             fill
             className="object-contain"
@@ -267,7 +268,7 @@ export default function BonoQuizContent() {
           }}
         >
           <Image
-            src="/bono/chat-icon.svg"
+            src={withBasePath("/bono/chat-icon.svg")}
             alt="채팅 아이콘"
             fill
             className="object-contain"
@@ -388,7 +389,7 @@ export default function BonoQuizContent() {
           >
             <div style={{ width: 17 * scale, height: 17 * scale }}>
               <Image
-                src="/bono/side-tab-icon.svg"
+                src={withBasePath("/bono/side-tab-icon.svg")}
                 alt=""
                 width={17 * scale}
                 height={17 * scale}
@@ -418,7 +419,7 @@ export default function BonoQuizContent() {
           >
             <div style={{ width: 73 * scale, height: 4 * scale }}>
               <Image
-                src="/bono/side-tab-text.svg"
+                src={withBasePath("/bono/side-tab-text.svg")}
                 alt=""
                 width={73 * scale}
                 height={4 * scale}
@@ -492,7 +493,7 @@ export default function BonoQuizContent() {
                   }}
                 >
                   <Image
-                    src="/bono/quiz/group-37210.svg"
+                    src={withBasePath("/bono/quiz/group-37210.svg")}
                     alt=""
                     fill
                     className="object-contain"
@@ -546,7 +547,7 @@ export default function BonoQuizContent() {
                   }}
                 >
                   <Image
-                    src="/bono/quiz/bono-avatar.svg"
+                    src={withBasePath("/bono/quiz/bono-avatar.svg")}
                     alt="보노"
                     fill
                     className="object-contain"
@@ -577,7 +578,7 @@ export default function BonoQuizContent() {
                     }}
                   >
                     <Image
-                      src="/bono/quiz/bono-icon.svg"
+                      src={withBasePath("/bono/quiz/bono-icon.svg")}
                       alt=""
                       fill
                       className="object-contain"
@@ -604,7 +605,7 @@ export default function BonoQuizContent() {
                     }}
                   >
                     <Image
-                      src="/bono/quiz/sound-icon.svg"
+                      src={withBasePath("/bono/quiz/sound-icon.svg")}
                       alt="소리 듣기"
                       width={110 * scale}
                       height={110 * scale}
@@ -644,7 +645,7 @@ export default function BonoQuizContent() {
                     }}
                   >
                     <Image
-                      src="/bono/quiz/chat-tail.svg"
+                      src={withBasePath("/bono/quiz/chat-tail.svg")}
                       alt=""
                       fill
                       className="object-contain"
@@ -688,7 +689,7 @@ export default function BonoQuizContent() {
                     }}
                   >
                     <Image
-                      src={selectedCharacter !== null ? `/bono/profile/profile-${selectedCharacter + 1}.png` : '/bono/quiz/profile-261185.png'}
+                      src={selectedCharacter !== null ? withBasePath(`/bono/profile/profile-${selectedCharacter + 1}.png`) : withBasePath('/bono/quiz/profile-261185.png')}
                       alt="사용자"
                       fill
                       className="object-cover"
@@ -760,7 +761,7 @@ export default function BonoQuizContent() {
                     }}
                   >
                     <Image
-                      src="/bono/quiz/send-icon.svg"
+                      src={withBasePath("/bono/quiz/send-icon.svg")}
                       alt="전송"
                       width={34 * scale}
                       height={34 * scale}
@@ -844,7 +845,7 @@ export default function BonoQuizContent() {
                   }}
                 >
                   <Image
-                    src="/bono/bono-avatar.svg"
+                    src={withBasePath("/bono/bono-avatar.svg")}
                     alt="보노"
                     width={100 * scale}
                     height={100 * scale}
@@ -929,7 +930,7 @@ export default function BonoQuizContent() {
                         }}
                       >
                         <Image
-                          src={`/bono/profile/profile-${num}.png`}
+                          src={withBasePath(`/bono/profile/profile-${num}.png`)}
                           alt={`캐릭터 ${num}`}
                           fill
                           className="object-cover"
